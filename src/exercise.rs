@@ -20,7 +20,7 @@ fn temp_file() -> String {
         .filter(|c| c.is_alphanumeric())
         .collect();
 
-    format!("./temp_{}_{}", process::id(), thread_id)
+    format!("./temp_{}_{thread_id}", process::id())
 }
 
 // The mode of the exercise.
@@ -121,7 +121,7 @@ impl Exercise {
                     r#"[package]
 name = "{}"
 version = "0.0.1"
-edition = "2018"
+edition = "2021"
 [[bin]]
 name = "{}"
 path = "{}.rs""#,
