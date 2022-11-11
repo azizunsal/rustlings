@@ -3,17 +3,19 @@
 // can offer. Follow the steps to complete the exercise.
 // Execute `rustlings hint iterators2` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 // Step 1.
 // Complete the `capitalize_first` function.
 // "hello" -> "Hello"
 pub fn capitalize_first(input: &str) -> String {
+    println!("Capitalize first. input= {}", input);
     let mut c = input.chars();
-    match c.next() {
+    let mut a = match c.next() {
         None => String::new(),
-        Some(first) => ???,
-    }
+        Some(first) => String::from(first).to_uppercase(),
+    };
+    let remaining: String = c.collect();
+    a.push_str(remaining.as_str());
+    a
 }
 
 // Step 2.
@@ -21,7 +23,8 @@ pub fn capitalize_first(input: &str) -> String {
 // Return a vector of strings.
 // ["hello", "world"] -> ["Hello", "World"]
 pub fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
-    vec![]
+    //[aziz] Collect is very powerful and very general. Rust just needs to know the desired type.
+    words.iter().map(|s| capitalize_first(s)).collect()
 }
 
 // Step 3.
@@ -29,7 +32,7 @@ pub fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
 // Return a single string.
 // ["hello", " ", "world"] -> "Hello World"
 pub fn capitalize_words_string(words: &[&str]) -> String {
-    String::new()
+    words.iter().map(|s| capitalize_first(s)).collect()
 }
 
 #[cfg(test)]
