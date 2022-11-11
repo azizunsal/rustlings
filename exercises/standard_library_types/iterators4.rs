@@ -13,6 +13,15 @@ pub fn factorial(num: u64) -> u64 {
     // For an extra challenge, don't use:
     // - recursion
     // Execute `rustlings hint iterators4` for hints.
+
+    // [aziz] A solution with recursion
+    if num == 0 { return 1; }
+    if num <= 2 { return num; }
+
+    return num * factorial(num - 1);
+
+    // [aziz] todo:  A solution without recursion
+
 }
 
 #[cfg(test)]
@@ -28,6 +37,7 @@ mod tests {
     fn factorial_of_1() {
         assert_eq!(1, factorial(1));
     }
+
     #[test]
     fn factorial_of_2() {
         assert_eq!(2, factorial(2));
