@@ -18,10 +18,12 @@ pub fn factorial(num: u64) -> u64 {
     if num == 0 { return 1; }
     if num <= 2 { return num; }
 
-    return num * factorial(num - 1);
+    // return num * factorial(num - 1);
 
     // [aziz] todo:  A solution without recursion
-
+    let rez = (1..num + 1).into_iter().fold(1, |acc, elm| acc * elm);
+    println!("rez= {}", rez);
+    rez
 }
 
 #[cfg(test)]
